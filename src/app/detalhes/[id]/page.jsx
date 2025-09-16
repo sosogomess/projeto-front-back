@@ -45,14 +45,14 @@ export default function DetalhesPage() {
         difficulty: "Alta - Requer descoloração",
         images: [
           "https://belabelinda.com/cdn/shop/files/IMG_5661.jpg?v=1753215055",
-          "/placeholder-platinum-2.jpg",
-          "/placeholder-platinum-3.jpg",
+          "https://belabelinda.com/cdn/shop/files/IMG_5661.jpg?v=1753215055",
+          "https://belabelinda.com/cdn/shop/files/IMG_5661.jpg?v=1753215055",
         ],
       },
       {
         id: 2,
         name: "Castanho Chocolate",
-        image: "/placeholder-brown.jpg",
+        image: "https://www.abcmais.com/midias/2025/05/Cabelo-na-cor-chocolate-e-tendencia-ivanazav_hairstylist-abcmais.jpg",
         category: "castanhos",
         favorites: true,
         description:
@@ -74,9 +74,189 @@ export default function DetalhesPage() {
         duration: "6-8 semanas",
         difficulty: "Baixa - Cor de fácil aplicação",
         images: [
-          "/placeholder-brown.jpg",
-          "/placeholder-brown-2.jpg",
-          "/placeholder-brown-3.jpg",
+          "https://www.abcmais.com/midias/2025/05/Cabelo-na-cor-chocolate-e-tendencia-ivanazav_hairstylist-abcmais.jpg",
+          "https://www.abcmais.com/midias/2025/05/Cabelo-na-cor-chocolate-e-tendencia-ivanazav_hairstylist-abcmais.jpg",
+          "https://www.abcmais.com/midias/2025/05/Cabelo-na-cor-chocolate-e-tendencia-ivanazav_hairstylist-abcmais.jpg",
+        ],
+      },
+      {
+        id: 3,
+        name: "Ruivo Intenso",
+        image: "/image/cabeloruivo.jpeg",
+        category: "ruivos",
+        favorites: false,
+        description:
+          "Ruivo vibrante e intenso que chama atenção e expressa personalidade.",
+        detailedDescription:
+          "O ruivo intenso é uma cor marcante que expressa personalidade forte e confiança. Este tom vibrante é perfeito para quem deseja um visual único e chamativo, destacando-se em qualquer ambiente.",
+        careInstructions: [
+          "Use shampoo específico para cabelos ruivos",
+          "Aplique máscara hidratante semanalmente",
+          "Evite exposição prolongada ao sol",
+          "Use protetor solar capilar",
+          "Retoque a raiz a cada 4-5 semanas",
+        ],
+        suitableFor: [
+          "Peles claras com undertone quente",
+          "Olhos verdes, azuis ou âmbar",
+          "Cabelos com base clara a média",
+        ],
+        duration: "4-5 semanas",
+        difficulty: "Média - Requer preparação da base",
+        images: [
+          "/image/cabeloruivo.jpeg",
+          "/image/cabeloruivo.jpeg",
+          "/image/cabeloruivo.jpeg",
+        ],
+      },
+      {
+        id: 4,
+        name: "Preto Azulado",
+        image: "https://areademulher.r7.com/wp-content/uploads/2020/01/cabelo-preto-azulado-descubra-como-ter-o-cabelo-dos-seus-sonhos-14.jpg",
+        category: "pretos",
+        favorites: false,
+        description:
+          "Preto profundo com reflexos azulados para um visual sofisticado.",
+        detailedDescription:
+          "O preto azulado é uma cor sofisticada que adiciona profundidade e brilho intenso ao cabelo. Os reflexos azulados proporcionam um visual moderno e elegante, perfeito para ocasiões especiais.",
+        careInstructions: [
+          "Use shampoo para cabelos escuros",
+          "Aplique óleo nutritivo nas pontas",
+          "Faça escovação com protetor térmico",
+          "Use máscara reconstrutora quinzenalmente",
+          "Evite produtos com sulfato",
+        ],
+        suitableFor: [
+          "Todos os tipos de pele",
+          "Olhos escuros ou claros",
+          "Cabelos com qualquer base",
+        ],
+        duration: "8-10 semanas",
+        difficulty: "Baixa - Cor de cobertura",
+        images: [
+          "https://areademulher.r7.com/wp-content/uploads/2020/01/cabelo-preto-azulado-descubra-como-ter-o-cabelo-dos-seus-sonhos-14.jpg",
+          "https://areademulher.r7.com/wp-content/uploads/2020/01/cabelo-preto-azulado-descubra-como-ter-o-cabelo-dos-seus-sonhos-14.jpg",
+          "https://areademulher.r7.com/wp-content/uploads/2020/01/cabelo-preto-azulado-descubra-como-ter-o-cabelo-dos-seus-sonhos-14.jpg",
+        ],
+      },
+      {
+        id: 5,
+        name: "Loiro Mel",
+        image: "https://i0.wp.com/alineandrade.com.br/wp-content/uploads/2023/04/loiro-mel-2.jpeg?resize=819%2C1024&ssl=1",
+        category: "loiros",
+        favorites: true,
+        description:
+          "Loiro mel dourado, perfeito para um visual natural e luminoso.",
+        detailedDescription:
+          "O loiro mel é uma tonalidade dourada e natural que confere luminosidade e calor ao visual. Esta cor versátil combina perfeitamente com diversos tons de pele, proporcionando um look solar e radiante.",
+        careInstructions: [
+          "Use shampoo matizador dourado semanalmente",
+          "Aplique leave-in com proteção UV",
+          "Hidrate profundamente a cada 10 dias",
+          "Use água morna para lavagem",
+          "Faça glossing para manter o brilho",
+        ],
+        suitableFor: [
+          "Peles claras a médias com undertone quente",
+          "Olhos mel, verdes ou castanhos",
+          "Cabelos com base clara a média",
+        ],
+        duration: "5-7 semanas",
+        difficulty: "Média - Requer descoloração suave",
+        images: [
+          "https://i0.wp.com/alineandrade.com.br/wp-content/uploads/2023/04/loiro-mel-2.jpeg?resize=819%2C1024&ssl=1",
+          "https://i0.wp.com/alineandrade.com.br/wp-content/uploads/2023/04/loiro-mel-2.jpeg?resize=819%2C1024&ssl=1",
+          "https://i0.wp.com/alineandrade.com.br/wp-content/uploads/2023/04/loiro-mel-2.jpeg?resize=819%2C1024&ssl=1",
+        ],
+      },
+      {
+        id: 6,
+        name: "Castanho Claro",
+        image: "https://dicasdecabelo.com.br/wp-content/uploads/2025/05/cabelo-castanho-claro-78.jpg",
+        category: "castanhos",
+        favorites: false,
+        description:
+          "Castanho avelã com nuances quentes, ideal para todos os tons de pele.",
+        detailedDescription:
+          "O castanho claro avelã é uma cor versátil e natural que se adapta a diversos estilos. Com nuances quentes e suaves, esta tonalidade proporciona um visual elegante e atemporal.",
+        careInstructions: [
+          "Use shampoo para cabelos coloridos",
+          "Aplique condicionador nutritivo",
+          "Faça cronograma capilar mensal",
+          "Proteja do calor excessivo",
+          "Use produtos sem sulfato",
+        ],
+        suitableFor: [
+          "Todos os tipos de pele",
+          "Olhos de qualquer cor",
+          "Cabelos com base natural",
+        ],
+        duration: "6-8 semanas",
+        difficulty: "Baixa - Cor natural",
+        images: [
+          "https://dicasdecabelo.com.br/wp-content/uploads/2025/05/cabelo-castanho-claro-78.jpg",
+          "https://dicasdecabelo.com.br/wp-content/uploads/2025/05/cabelo-castanho-claro-78.jpg",
+          "https://dicasdecabelo.com.br/wp-content/uploads/2025/05/cabelo-castanho-claro-78.jpg",
+        ],
+      },
+      {
+        id: 7,
+        name: "Ruivo Natural",
+        image: "https://i.pinimg.com/originals/39/4d/1e/394d1e77cb7b6a0bc8c7772b7b362a9b.jpg",
+        category: "ruivos",
+        favorites: false,
+        description:
+          "Ruivo natural e vibrante, perfeito para quem busca um visual marcante.",
+        detailedDescription:
+          "O ruivo natural é uma cor clássica e elegante que proporciona um visual sofisticado. Com tons mais suaves que o ruivo intenso, esta cor mantém a personalidade marcante dos ruivos com maior naturalidade.",
+        careInstructions: [
+          "Use shampoo específico para ruivos",
+          "Aplique protetor solar capilar",
+          "Hidrate semanalmente",
+          "Evite água muito quente",
+          "Retoque mensalmente",
+        ],
+        suitableFor: [
+          "Peles claras a médias",
+          "Olhos verdes, azuis ou castanhos",
+          "Cabelos com base clara",
+        ],
+        duration: "5-6 semanas",
+        difficulty: "Média - Requer cuidado especial",
+        images: [
+          "https://i.pinimg.com/originals/39/4d/1e/394d1e77cb7b6a0bc8c7772b7b362a9b.jpg",
+          "https://i.pinimg.com/originals/39/4d/1e/394d1e77cb7b6a0bc8c7772b7b362a9b.jpg",
+          "https://i.pinimg.com/originals/39/4d/1e/394d1e77cb7b6a0bc8c7772b7b362a9b.jpg",
+        ],
+      },
+      {
+        id: 8,
+        name: "Preto Natural",
+        image: "https://blog.vizcaya.com.br/wp-content/uploads/2018/07/cabelos-pretos-com-mechas-cinza.png",
+        category: "pretos",
+        favorites: false,
+        description:
+          "Preto natural e profundo, perfeito para quem busca um visual elegante.",
+        detailedDescription:
+          "O preto natural é a cor mais clássica e atemporal. Proporciona elegância e sofisticação em qualquer ocasião, sendo perfeito para quem deseja um visual discreto mas impactante.",
+        careInstructions: [
+          "Use shampoo para cabelos escuros",
+          "Aplique máscara nutritiva semanalmente",
+          "Proteja do sol para evitar desbotamento",
+          "Use leave-in hidratante",
+          "Faça escovação com proteção térmica",
+        ],
+        suitableFor: [
+          "Todos os tipos de pele",
+          "Qualquer cor de olhos",
+          "Cabelos de qualquer base",
+        ],
+        duration: "8-12 semanas",
+        difficulty: "Baixa - Cor de fácil manutenção",
+        images: [
+          "https://blog.vizcaya.com.br/wp-content/uploads/2018/07/cabelos-pretos-com-mechas-cinza.png",
+          "https://blog.vizcaya.com.br/wp-content/uploads/2018/07/cabelos-pretos-com-mechas-cinza.png",
+          "https://blog.vizcaya.com.br/wp-content/uploads/2018/07/cabelos-pretos-com-mechas-cinza.png",
         ],
       },
     ];
