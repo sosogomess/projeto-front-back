@@ -1,0 +1,126 @@
+
+.header {
+  background-color: #ffffff;
+  border-bottom: 1px solid #e5e7eb;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem 2rem;
+}
+
+.headerContent {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+}
+
+.logoImage {
+  border-radius: 50%;
+}
+
+.logoText {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: #1a1a1a;
+  font-family: 'Playfair Display', serif;
+  letter-spacing: -0.025em;
+}
+
+.nav {
+  display: none;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+@media (min-width: 768px) {
+  .nav {
+    display: flex;
+  }
+}
+
+.navLink {
+  color: #1a1a1a;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 0.75rem 1.25rem;
+  border-radius: 8px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  font-size: 0.95rem;
+}
+
+.navLink::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #1a1a1a, #4a4a4a);
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+}
+
+.navLink:hover {
+  background-color: rgba(26, 26, 26, 0.04);
+  color: #1a1a1a;
+  transform: translateY(-1px);
+}
+
+.navLink:hover::before {
+  width: 60%;
+}
+
+.navLink.active {
+  color: #1a1a1a;
+  font-weight: 600;
+  position: relative;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.7), rgba(248, 249, 250, 0.8));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+.navLink.active::before {
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #1a1a1a, transparent);
+  bottom: -1px;
+  opacity: 0.6;
+}
+
+.mobileMenu {
+  display: block;
+  padding: 0.5rem;
+  border-radius: 6px;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+}
+
+@media (min-width: 768px) {
+  .mobileMenu {
+    display: none;
+  }
+}
+
+.mobileMenu:hover {
+  background-color: #f3f4f6;
+}
+
+.mobileMenuIcon {
+  width: 1.5rem;
+  height: 1.5rem;
+  color: #1a1a1a;
+}
