@@ -20,7 +20,7 @@
 
 .imageContainer {
   position: relative;
-  height: 10rem;
+  height: 14rem;
   background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
   overflow: hidden;
 }
@@ -85,7 +85,7 @@
 }
 
 .cardContent {
-  padding: 1rem;
+  padding: 0.875rem;
 }
 
 .colorName {
@@ -100,10 +100,30 @@
 .colorCategory {
   color: #6b7280;
   font-size: 0.8rem;
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.5rem;
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.05em;
+}
+
+.colorPrice {
+  color: #059669;
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  font-family: 'Inter', sans-serif;
+}
+
+.colorDescription {
+  color: #6b7280;
+  font-size: 0.825rem;
+  margin-bottom: 0.75rem;
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .cardFooter {

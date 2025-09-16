@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import styles from './ColorCard.module.css';
 
-export default function ColorCard({ color, showFavoriteButton = true }) {
+export default function ColorCard({ color, showFavoriteButton = true, showPrice = false }) {
   const [isFavorite, setIsFavorite] = useState(false);
 
   useEffect(() => {
@@ -57,6 +57,12 @@ export default function ColorCard({ color, showFavoriteButton = true }) {
       <div className={styles.cardContent}>
         <h3 className={styles.colorName}>{color.name}</h3>
         <p className={styles.colorCategory}>Categoria: {color.category}</p>
+        {showPrice && color.price && (
+          <p className={styles.colorPrice}>{color.price}</p>
+        )}
+        {color.description && (
+          <p className={styles.colorDescription}>{color.description}</p>
+        )}
         <div className={styles.cardFooter}>
           <span className={styles.viewDetails}>Ver detalhes</span>
           <svg className={styles.arrowIcon} fill="none" stroke="currentColor" viewBox="0 0 24 24">
