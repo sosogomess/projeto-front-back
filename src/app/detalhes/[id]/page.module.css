@@ -1,5 +1,3 @@
-/* Página de Detalhes da Cor - Design Delicado */
-
 .pageContainer {
   min-height: 100vh;
   background: linear-gradient(135deg, #fafbfc 0%, #ffffff 50%, #f8fafc 100%);
@@ -63,7 +61,8 @@
 /* Seção de Imagens */
 .imageSection {
   position: sticky;
-  top: 100px;
+  top: 20px;
+  height: fit-content;
 }
 
 .mainImageContainer {

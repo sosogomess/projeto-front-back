@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import ColorCard from '../../components/colorCard/ColorCard';
+import { hairTonesAPI } from '../../services/api';
 import styles from './page.module.css';
 
 export default function ListagemPage() {
@@ -21,81 +22,51 @@ export default function ListagemPage() {
     { value: 'fantasia', label: 'Cores Fantasia' }
   ];
 
+  // Carregar cores da API
   useEffect(() => {
-    const mockColors = [
-      {
-        id: 1,
-        name: "Loiro Platinado",
-        image: "https://belabelinda.com/cdn/shop/files/IMG_5661.jpg?v=1753215055",
-        category: "loiros",
-        favorites: false,
-        description: "Tom loiro platinado ultra claro, perfeito para quem busca um visual marcante."
-      },
-      {
-        id: 2,
-        name: "Castanho Chocolate",
-        image: "https://www.abcmais.com/midias/2025/05/Cabelo-na-cor-chocolate-e-tendencia-ivanazav_hairstylist-abcmais.jpg",
-        category: "castanhos",
-        favorites: true,
-        description: "Castanho chocolate rico e profundo, ideal para um look natural e elegante.",
-      },
-      {
-        id: 3,
-        name: "Ruivo Intenso",
-        image: "/image/cabeloruivo.jpeg",
-        category: "ruivos",
-        favorites: false,
-        description: "Ruivo vibrante e intenso que chama atenção e expressa personalidade.",
-      },
-      {
-        id: 4,
-        name: "Preto Azulado",
-        image: "https://areademulher.r7.com/wp-content/uploads/2020/01/cabelo-preto-azulado-descubra-como-ter-o-cabelo-dos-seus-sonhos-14.jpg",
-        category: "pretos",
-        favorites: false,
-        description: "Preto profundo com reflexos azulados para um visual sofisticado.",
-      },
-      {
-        id: 5,
-        name: "Loiro Mel",
-        image: "https://i0.wp.com/alineandrade.com.br/wp-content/uploads/2023/04/loiro-mel-2.jpeg?resize=819%2C1024&ssl=1",
-        category: "loiros",
-        favorites: true,
-        description: "Loiro mel dourado, perfeito para um visual natural e luminoso.",
-      },
-      {
-        id: 6,
-        name: "Castanho Claro",
-        image: "https://dicasdecabelo.com.br/wp-content/uploads/2025/05/cabelo-castanho-claro-78.jpg",
-        category: "castanhos",
-        favorites: false,
-        description: "Castanho avelã com nuances quentes, ideal para todos os tons de pele.",
-      },
-      {
-        id: 7,
-        name: "Ruivo Natural",
-        image: "https://i.pinimg.com/originals/39/4d/1e/394d1e77cb7b6a0bc8c7772b7b362a9b.jpg",
-        category: "ruivos",
-        favorites: false,
-        description: "Ruivo natural e vibrante, perfeito para quem busca um visual marcante.",
-      },
+    const fetchColors = async () => {
+      try {
+        setLoading(true);
+        const colorsData = await hairTonesAPI.getAll();
+        setColors(colorsData);
+        setFilteredColors(colorsData);
+      } catch (error) {
+        console.error('Erro ao carregar cores:', error);
+        // Fallback para dados locais se a API falhar
+        const fallbackColors = [
+          {
+            id: 1,
+            name: "Loiro Platinado",
+            image: "https://belabelinda.com/cdn/shop/files/IMG_5661.jpg?v=1753215055",
+            category: "loiros",
+            favorites: false,
+            description: "Tom loiro platinado ultra claro, perfeito para quem busca um visual marcante."
+          },
+          {
+            id: 2,
+            name: "Castanho Chocolate",
+            image: "https://www.abcmais.com/midias/2025/05/Cabelo-na-cor-chocolate-e-tendencia-ivanazav_hairstylist-abcmais.jpg",
+            category: "castanhos",
+            favorites: true,
+            description: "Castanho chocolate rico e profundo, ideal para um look natural e elegante.",
+          },
+          {
+            id: 3,
+            name: "Ruivo Intenso",
+            image: "/image/cabeloruivo.jpeg",
+            category: "ruivos",
+            favorites: false,
+            description: "Ruivo vibrante e intenso que chama atenção e expressa personalidade.",
+          }
+        ];
+        setColors(fallbackColors);
+        setFilteredColors(fallbackColors);
+      } finally {
+        setLoading(false);
+      }
+    };
 
-       {
-        id: 8,
-        name: "Preto natural",
-        image: "https://blog.vizcaya.com.br/wp-content/uploads/2018/07/cabelos-pretos-com-mechas-cinza.png",
-        category: "pretos",
-        favorites: false,
-        description: "Preto natural e profundo, perfeito para quem busca um visual elegante.",
-      },
-    
-    ];
-
-    setTimeout(() => {
-      setColors(mockColors);
-      setFilteredColors(mockColors);
-      setLoading(false);
-    }, 1000);
+    fetchColors();
   }, []);
 
 

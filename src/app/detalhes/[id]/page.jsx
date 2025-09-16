@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { useParams, useRouter } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
+import { hairTonesAPI } from "../../../services/api";
 import styles from "./page.module.css";
 
 export default function DetalhesPage() {
@@ -17,262 +18,110 @@ export default function DetalhesPage() {
   useEffect(() => {
     if (!id) return;
 
-    const mockColors = [
-      {
-        id: 1,
-        name: "Loiro Platinado",
-        image:
-          "https://belabelinda.com/cdn/shop/files/IMG_5661.jpg?v=1753215055",
-        category: "loiros",
-        favorites: false,
-        description:
-          "Tom loiro platinado ultra claro, perfeito para quem busca um visual marcante e moderno.",
-        detailedDescription:
-          "O loiro platinado é uma das cores mais desejadas no mundo da coloração capilar. Este tom ultra claro proporciona um visual sofisticado e contemporâneo, ideal para quem deseja se destacar com elegância.",
-        careInstructions: [
-          "Use shampoo matizador roxo 2-3 vezes por semana",
-          "Aplique máscara nutritiva semanalmente",
-          "Evite exposição excessiva ao sol",
-          "Use protetor térmico antes do secador",
-          "Hidrate profundamente a cada 15 dias",
-        ],
-        suitableFor: [
-          "Peles claras e médias",
-          "Olhos claros ou escuros",
-          "Cabelos com base clara",
-        ],
-        duration: "4-6 semanas",
-        difficulty: "Alta - Requer descoloração",
-        images: [
-          "https://belabelinda.com/cdn/shop/files/IMG_5661.jpg?v=1753215055",
-          "https://belabelinda.com/cdn/shop/files/IMG_5661.jpg?v=1753215055",
-          "https://belabelinda.com/cdn/shop/files/IMG_5661.jpg?v=1753215055",
-        ],
-      },
-      {
-        id: 2,
-        name: "Castanho Chocolate",
-        image: "https://www.abcmais.com/midias/2025/05/Cabelo-na-cor-chocolate-e-tendencia-ivanazav_hairstylist-abcmais.jpg",
-        category: "castanhos",
-        favorites: true,
-        description:
-          "Castanho chocolate rico e profundo, ideal para um look natural e elegante.",
-        detailedDescription:
-          "O castanho chocolate é um tom clássico e versátil que combina com diversos tipos de pele. Sua riqueza e profundidade proporcionam um visual natural e sofisticado.",
-        careInstructions: [
-          "Use shampoo para cabelos coloridos",
-          "Aplique leave-in com proteção UV",
-          "Faça cronograma capilar mensal",
-          "Use água fria no enxágue final",
-          "Evite lavagens diárias",
-        ],
-        suitableFor: [
-          "Todos os tipos de pele",
-          "Olhos castanhos ou verdes",
-          "Base natural média",
-        ],
-        duration: "6-8 semanas",
-        difficulty: "Baixa - Cor de fácil aplicação",
-        images: [
-          "https://www.abcmais.com/midias/2025/05/Cabelo-na-cor-chocolate-e-tendencia-ivanazav_hairstylist-abcmais.jpg",
-          "https://www.abcmais.com/midias/2025/05/Cabelo-na-cor-chocolate-e-tendencia-ivanazav_hairstylist-abcmais.jpg",
-          "https://www.abcmais.com/midias/2025/05/Cabelo-na-cor-chocolate-e-tendencia-ivanazav_hairstylist-abcmais.jpg",
-        ],
-      },
-      {
-        id: 3,
-        name: "Ruivo Intenso",
-        image: "/image/cabeloruivo.jpeg",
-        category: "ruivos",
-        favorites: false,
-        description:
-          "Ruivo vibrante e intenso que chama atenção e expressa personalidade.",
-        detailedDescription:
-          "O ruivo intenso é uma cor marcante que expressa personalidade forte e confiança. Este tom vibrante é perfeito para quem deseja um visual único e chamativo, destacando-se em qualquer ambiente.",
-        careInstructions: [
-          "Use shampoo específico para cabelos ruivos",
-          "Aplique máscara hidratante semanalmente",
-          "Evite exposição prolongada ao sol",
-          "Use protetor solar capilar",
-          "Retoque a raiz a cada 4-5 semanas",
-        ],
-        suitableFor: [
-          "Peles claras com undertone quente",
-          "Olhos verdes, azuis ou âmbar",
-          "Cabelos com base clara a média",
-        ],
-        duration: "4-5 semanas",
-        difficulty: "Média - Requer preparação da base",
-        images: [
-          "/image/cabeloruivo.jpeg",
-          "/image/cabeloruivo.jpeg",
-          "/image/cabeloruivo.jpeg",
-        ],
-      },
-      {
-        id: 4,
-        name: "Preto Azulado",
-        image: "https://areademulher.r7.com/wp-content/uploads/2020/01/cabelo-preto-azulado-descubra-como-ter-o-cabelo-dos-seus-sonhos-14.jpg",
-        category: "pretos",
-        favorites: false,
-        description:
-          "Preto profundo com reflexos azulados para um visual sofisticado.",
-        detailedDescription:
-          "O preto azulado é uma cor sofisticada que adiciona profundidade e brilho intenso ao cabelo. Os reflexos azulados proporcionam um visual moderno e elegante, perfeito para ocasiões especiais.",
-        careInstructions: [
-          "Use shampoo para cabelos escuros",
-          "Aplique óleo nutritivo nas pontas",
-          "Faça escovação com protetor térmico",
-          "Use máscara reconstrutora quinzenalmente",
-          "Evite produtos com sulfato",
-        ],
-        suitableFor: [
-          "Todos os tipos de pele",
-          "Olhos escuros ou claros",
-          "Cabelos com qualquer base",
-        ],
-        duration: "8-10 semanas",
-        difficulty: "Baixa - Cor de cobertura",
-        images: [
-          "https://areademulher.r7.com/wp-content/uploads/2020/01/cabelo-preto-azulado-descubra-como-ter-o-cabelo-dos-seus-sonhos-14.jpg",
-          "https://areademulher.r7.com/wp-content/uploads/2020/01/cabelo-preto-azulado-descubra-como-ter-o-cabelo-dos-seus-sonhos-14.jpg",
-          "https://areademulher.r7.com/wp-content/uploads/2020/01/cabelo-preto-azulado-descubra-como-ter-o-cabelo-dos-seus-sonhos-14.jpg",
-        ],
-      },
-      {
-        id: 5,
-        name: "Loiro Mel",
-        image: "https://i0.wp.com/alineandrade.com.br/wp-content/uploads/2023/04/loiro-mel-2.jpeg?resize=819%2C1024&ssl=1",
-        category: "loiros",
-        favorites: true,
-        description:
-          "Loiro mel dourado, perfeito para um visual natural e luminoso.",
-        detailedDescription:
-          "O loiro mel é uma tonalidade dourada e natural que confere luminosidade e calor ao visual. Esta cor versátil combina perfeitamente com diversos tons de pele, proporcionando um look solar e radiante.",
-        careInstructions: [
-          "Use shampoo matizador dourado semanalmente",
-          "Aplique leave-in com proteção UV",
-          "Hidrate profundamente a cada 10 dias",
-          "Use água morna para lavagem",
-          "Faça glossing para manter o brilho",
-        ],
-        suitableFor: [
-          "Peles claras a médias com undertone quente",
-          "Olhos mel, verdes ou castanhos",
-          "Cabelos com base clara a média",
-        ],
-        duration: "5-7 semanas",
-        difficulty: "Média - Requer descoloração suave",
-        images: [
-          "https://i0.wp.com/alineandrade.com.br/wp-content/uploads/2023/04/loiro-mel-2.jpeg?resize=819%2C1024&ssl=1",
-          "https://i0.wp.com/alineandrade.com.br/wp-content/uploads/2023/04/loiro-mel-2.jpeg?resize=819%2C1024&ssl=1",
-          "https://i0.wp.com/alineandrade.com.br/wp-content/uploads/2023/04/loiro-mel-2.jpeg?resize=819%2C1024&ssl=1",
-        ],
-      },
-      {
-        id: 6,
-        name: "Castanho Claro",
-        image: "https://dicasdecabelo.com.br/wp-content/uploads/2025/05/cabelo-castanho-claro-78.jpg",
-        category: "castanhos",
-        favorites: false,
-        description:
-          "Castanho avelã com nuances quentes, ideal para todos os tons de pele.",
-        detailedDescription:
-          "O castanho claro avelã é uma cor versátil e natural que se adapta a diversos estilos. Com nuances quentes e suaves, esta tonalidade proporciona um visual elegante e atemporal.",
-        careInstructions: [
-          "Use shampoo para cabelos coloridos",
-          "Aplique condicionador nutritivo",
-          "Faça cronograma capilar mensal",
-          "Proteja do calor excessivo",
-          "Use produtos sem sulfato",
-        ],
-        suitableFor: [
-          "Todos os tipos de pele",
-          "Olhos de qualquer cor",
-          "Cabelos com base natural",
-        ],
-        duration: "6-8 semanas",
-        difficulty: "Baixa - Cor natural",
-        images: [
-          "https://dicasdecabelo.com.br/wp-content/uploads/2025/05/cabelo-castanho-claro-78.jpg",
-          "https://dicasdecabelo.com.br/wp-content/uploads/2025/05/cabelo-castanho-claro-78.jpg",
-          "https://dicasdecabelo.com.br/wp-content/uploads/2025/05/cabelo-castanho-claro-78.jpg",
-        ],
-      },
-      {
-        id: 7,
-        name: "Ruivo Natural",
-        image: "https://i.pinimg.com/originals/39/4d/1e/394d1e77cb7b6a0bc8c7772b7b362a9b.jpg",
-        category: "ruivos",
-        favorites: false,
-        description:
-          "Ruivo natural e vibrante, perfeito para quem busca um visual marcante.",
-        detailedDescription:
-          "O ruivo natural é uma cor clássica e elegante que proporciona um visual sofisticado. Com tons mais suaves que o ruivo intenso, esta cor mantém a personalidade marcante dos ruivos com maior naturalidade.",
-        careInstructions: [
-          "Use shampoo específico para ruivos",
-          "Aplique protetor solar capilar",
-          "Hidrate semanalmente",
-          "Evite água muito quente",
-          "Retoque mensalmente",
-        ],
-        suitableFor: [
-          "Peles claras a médias",
-          "Olhos verdes, azuis ou castanhos",
-          "Cabelos com base clara",
-        ],
-        duration: "5-6 semanas",
-        difficulty: "Média - Requer cuidado especial",
-        images: [
-          "https://i.pinimg.com/originals/39/4d/1e/394d1e77cb7b6a0bc8c7772b7b362a9b.jpg",
-          "https://i.pinimg.com/originals/39/4d/1e/394d1e77cb7b6a0bc8c7772b7b362a9b.jpg",
-          "https://i.pinimg.com/originals/39/4d/1e/394d1e77cb7b6a0bc8c7772b7b362a9b.jpg",
-        ],
-      },
-      {
-        id: 8,
-        name: "Preto Natural",
-        image: "https://blog.vizcaya.com.br/wp-content/uploads/2018/07/cabelos-pretos-com-mechas-cinza.png",
-        category: "pretos",
-        favorites: false,
-        description:
-          "Preto natural e profundo, perfeito para quem busca um visual elegante.",
-        detailedDescription:
-          "O preto natural é a cor mais clássica e atemporal. Proporciona elegância e sofisticação em qualquer ocasião, sendo perfeito para quem deseja um visual discreto mas impactante.",
-        careInstructions: [
-          "Use shampoo para cabelos escuros",
-          "Aplique máscara nutritiva semanalmente",
-          "Proteja do sol para evitar desbotamento",
-          "Use leave-in hidratante",
-          "Faça escovação com proteção térmica",
-        ],
-        suitableFor: [
-          "Todos os tipos de pele",
-          "Qualquer cor de olhos",
-          "Cabelos de qualquer base",
-        ],
-        duration: "8-12 semanas",
-        difficulty: "Baixa - Cor de fácil manutenção",
-        images: [
-          "https://blog.vizcaya.com.br/wp-content/uploads/2018/07/cabelos-pretos-com-mechas-cinza.png",
-          "https://blog.vizcaya.com.br/wp-content/uploads/2018/07/cabelos-pretos-com-mechas-cinza.png",
-          "https://blog.vizcaya.com.br/wp-content/uploads/2018/07/cabelos-pretos-com-mechas-cinza.png",
-        ],
-      },
-    ];
+    const fetchColorDetails = async () => {
+      try {
+        setLoading(true);
+        const colorData = await hairTonesAPI.getById(parseInt(id));
+        
+        // Garantir que images seja sempre um array
+        if (colorData) {
+          if (!colorData.images || !Array.isArray(colorData.images)) {
+            colorData.images = colorData.image ? [colorData.image] : [];
+          }
+          if (!colorData.careInstructions || !Array.isArray(colorData.careInstructions)) {
+            colorData.careInstructions = [];
+          }
+          if (!colorData.suitableFor || !Array.isArray(colorData.suitableFor)) {
+            colorData.suitableFor = [];
+          }
+          
+          console.log('Dados da cor carregados:', colorData);
+          console.log('Care Instructions:', colorData.careInstructions);
+          console.log('Suitable For:', colorData.suitableFor);
+          
+          setColor(colorData);
 
-    const foundColor = mockColors.find((c) => c.id === parseInt(id));
+          const favorites = JSON.parse(
+            localStorage.getItem("favoriteColors") || "[]"
+          );
+          setIsFavorite(favorites.some(fav => fav.id === colorData.id));
+        }
+      } catch (error) {
+        console.error('Erro ao carregar detalhes da cor:', error);
+        // Fallback para dados locais se a API falhar
+        const fallbackColors = [
+          {
+            id: 1,
+            name: "Loiro Platinado",
+            image: "https://belabelinda.com/cdn/shop/files/IMG_5661.jpg?v=1753215055",
+            category: "loiros",
+            favorites: false,
+            description: "Tom loiro platinado ultra claro, perfeito para quem busca um visual marcante e moderno.",
+            detailedDescription: "O loiro platinado é uma das cores mais desejadas no mundo da coloração capilar.",
+            careInstructions: ["Use shampoo matizador roxo 2-3 vezes por semana", "Aplique máscara nutritiva semanalmente"],
+            suitableFor: ["Peles claras e médias", "Olhos claros ou escuros"],
+            duration: "4-6 semanas",
+            difficulty: "Alta - Requer descoloração",
+            images: [
+              "https://belabelinda.com/cdn/shop/files/IMG_5661.jpg?v=1753215055",
+              "https://belabelinda.com/cdn/shop/files/IMG_5661.jpg?v=1753215055",
+              "https://belabelinda.com/cdn/shop/files/IMG_5661.jpg?v=1753215055"
+            ]
+          },
+          {
+            id: 2,
+            name: "Castanho Chocolate",
+            image: "https://www.abcmais.com/midias/2025/05/Cabelo-na-cor-chocolate-e-tendencia-ivanazav_hairstylist-abcmais.jpg",
+            category: "castanhos",
+            favorites: true,
+            description: "Castanho chocolate rico e profundo, ideal para um look natural e elegante.",
+            detailedDescription: "O castanho chocolate é um tom clássico e versátil que combina com diversos tipos de pele.",
+            careInstructions: ["Use shampoo para cabelos coloridos", "Aplique leave-in com proteção UV"],
+            suitableFor: ["Todos os tipos de pele", "Olhos castanhos ou verdes"],
+            duration: "6-8 semanas",
+            difficulty: "Baixa - Cor de fácil aplicação",
+            images: [
+              "https://www.abcmais.com/midias/2025/05/Cabelo-na-cor-chocolate-e-tendencia-ivanazav_hairstylist-abcmais.jpg",
+              "https://www.abcmais.com/midias/2025/05/Cabelo-na-cor-chocolate-e-tendencia-ivanazav_hairstylist-abcmais.jpg",
+              "https://www.abcmais.com/midias/2025/05/Cabelo-na-cor-chocolate-e-tendencia-ivanazav_hairstylist-abcmais.jpg"
+            ]
+          },
+          {
+            id: 3,
+            name: "Ruivo Intenso",
+            image: "/image/cabeloruivo.jpeg",
+            category: "ruivos",
+            favorites: false,
+            description: "Ruivo vibrante e intenso que chama atenção e expressa personalidade.",
+            detailedDescription: "O ruivo intenso é uma cor marcante que expressa personalidade forte e confiança.",
+            careInstructions: ["Use shampoo específico para cabelos ruivos", "Aplique máscara hidratante semanalmente"],
+            suitableFor: ["Peles claras com undertone quente", "Olhos verdes, azuis ou âmbar"],
+            duration: "4-5 semanas",
+            difficulty: "Média - Requer preparação da base",
+            images: [
+              "/image/cabeloruivo.jpeg",
+              "/image/cabeloruivo.jpeg",
+              "/image/cabeloruivo.jpeg"
+            ]
+          }
+        ];
+        
+        const foundColor = fallbackColors.find((c) => c.id === parseInt(id));
+        if (foundColor) {
+          console.log('Usando dados de fallback para cor:', foundColor);
+          console.log('Care Instructions fallback:', foundColor.careInstructions);
+          console.log('Suitable For fallback:', foundColor.suitableFor);
+          
+          setColor(foundColor);
+          const favorites = JSON.parse(localStorage.getItem("favoriteColors") || "[]");
+          setIsFavorite(favorites.some(fav => fav.id === foundColor.id));
+        }
+      } finally {
+        setLoading(false);
+      }
+    };
 
-    if (foundColor) {
-      setColor(foundColor);
-
-      const favorites = JSON.parse(
-        localStorage.getItem("favoriteColors") || "[]"
-      );
-      setIsFavorite(favorites.some(fav => fav.id === foundColor.id));
-    }
-
-    setLoading(false);
+    fetchColorDetails();
   }, [id]);
 
   const toggleFavorite = () => {
@@ -358,7 +207,7 @@ export default function DetalhesPage() {
           <div className={styles.imageSection}>
             <div className={styles.mainImageContainer}>
               <img
-                src={color.images[activeImageIndex]}
+                src={color.images && color.images[activeImageIndex] ? color.images[activeImageIndex] : (color.image || "/placeholder-hair-color.jpg")}
                 alt={`${color.name} - Imagem ${activeImageIndex + 1}`}
                 className={styles.mainImage}
                 onError={(e) => {
@@ -387,7 +236,7 @@ export default function DetalhesPage() {
               </button>
             </div>
 
-            {color.images.length > 1 && (
+            {color.images && color.images.length > 1 && (
               <div className={styles.thumbnailsContainer}>
                 {color.images.map((image, index) => (
                   <button
@@ -442,7 +291,7 @@ export default function DetalhesPage() {
             <div className={styles.detailsCard}>
               <h3 className={styles.cardTitle}>Sobre esta cor</h3>
               <p className={styles.detailedDescription}>
-                {color.detailedDescription}
+                {color.detailedDescription || color.description}
               </p>
             </div>
 
@@ -450,16 +299,16 @@ export default function DetalhesPage() {
               <div className={styles.infoGrid}>
                 <div className={styles.infoItem}>
                   <span className={styles.infoLabel}>Duração:</span>
-                  <span className={styles.infoValue}>{color.duration}</span>
+                  <span className={styles.infoValue}>{color.duration || "Não informado"}</span>
                 </div>
                 <div className={styles.infoItem}>
                   <span className={styles.infoLabel}>Dificuldade:</span>
                   <span
                     className={`${styles.infoValue} ${getDifficultyColor(
-                      color.difficulty
+                      color.difficulty || "Baixa"
                     )}`}
                   >
-                    {color.difficulty}
+                    {color.difficulty || "Não informado"}
                   </span>
                 </div>
               </div>
@@ -468,36 +317,48 @@ export default function DetalhesPage() {
             <div className={styles.suitabilityCard}>
               <h3 className={styles.cardTitle}>Adequado para</h3>
               <ul className={styles.suitabilityList}>
-                {color.suitableFor.map((item, index) => (
-                  <li key={index} className={styles.suitabilityItem}>
-                    <svg
-                      className={styles.checkIcon}
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M5 13l4 4L19 7"
-                      />
-                    </svg>
-                    {item}
+                {color.suitableFor && color.suitableFor.length > 0 ? (
+                  color.suitableFor.map((item, index) => (
+                    <li key={index} className={styles.suitabilityItem}>
+                      <svg
+                        className={styles.checkIcon}
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M5 13l4 4L19 7"
+                        />
+                      </svg>
+                      {item}
+                    </li>
+                  ))
+                ) : (
+                  <li className={styles.suitabilityItem}>
+                    <span>Informações não disponíveis</span>
                   </li>
-                ))}
+                )}
               </ul>
             </div>
 
             <div className={styles.careCard}>
               <h3 className={styles.cardTitle}>Dicas de Cuidados</h3>
               <ul className={styles.careList}>
-                {color.careInstructions.map((instruction, index) => (
-                  <li key={index} className={styles.careItem}>
-                    <span className={styles.careNumber}>{index + 1}</span>
-                    {instruction}
+                {color.careInstructions && color.careInstructions.length > 0 ? (
+                  color.careInstructions.map((instruction, index) => (
+                    <li key={index} className={styles.careItem}>
+                      <span className={styles.careNumber}>{index + 1}</span>
+                      {instruction}
+                    </li>
+                  ))
+                ) : (
+                  <li className={styles.careItem}>
+                    <span>Dicas de cuidados não disponíveis</span>
                   </li>
-                ))}
+                )}
               </ul>
             </div>
 
