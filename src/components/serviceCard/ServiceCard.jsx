@@ -1,8 +1,9 @@
+import Link from 'next/link';
 import styles from './ServiceCard.module.css';
 
 export default function ServiceCard({ service }) {
   return (
-    <div className={styles.serviceCard}>
+    <Link href={`/tecnicas/${service.id}`} className={styles.serviceCard}>
       <div className={styles.serviceImageContainer}>
         <img
           src={service.image}
@@ -18,10 +19,13 @@ export default function ServiceCard({ service }) {
         <p className={styles.serviceDescription}>
           {service.description}
         </p>
-        <button className={styles.serviceButton}>
+        <div className={styles.serviceButton}>
           {service.buttonText}
-        </button>
+          <svg className={styles.arrowIcon} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+          </svg>
+        </div>
       </div>
-    </div>
+    </Link>
   );
 }
