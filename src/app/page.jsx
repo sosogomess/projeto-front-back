@@ -10,60 +10,51 @@ export default function Home() {
   const [featuredColors, setFeaturedColors] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  // Dados dos serviços populares
   const popularServices = [
     {
       id: 1,
-      title: "Produtos & Acessórios",
-      description: "Descubra os melhores produtos para cuidar do seu cabelo em casa",
-      buttonText: "Explorar Produtos",
-      image: "/placeholders/hair-dryer.jpg"
+      title: "Mechas Californianas",
+      description: "Técnica natural que cria reflexos dourados e iluminados gradualmente",
+      buttonText: "Ver Técnica",
+      image: "https://i.pinimg.com/originals/c3/c3/1d/c3c31d668bd8e6ae9f4a6328589a55f2.jpg"
     },
     {
       id: 2,
-      title: "Tratamentos Especiais",
-      description: "Tratamentos profissionais para cabelos danificados",
-      buttonText: "Ver Tratamentos",
-      image: "/placeholders/hair-treatment.jpg"
+      title: "Ombré Hair",
+      description: "Degradê suave da raiz escura para pontas mais claras",
+      buttonText: "Explorar Ombré",
+      image: "https://www.londrinatur.com.br/wp-content/uploads/2018/08/ombre-hair.jpg"
     },
     {
       id: 3,
-      title: "Coloração Profissional",
-      description: "Técnicas avançadas de coloração para resultados perfeitos",
-      buttonText: "Agendar Consulta",
-      image: "/placeholders/hair-color.jpg"
-    },
-    {
-      id: 4,
-      title: "Extensões Premium",
-      description: "Extensões de cabelo natural para volume e comprimento",
-      buttonText: "Ver Extensões",
-      image: "/placeholders/hair-extensions.jpg"
+      title: "Luzes Tradicionais",
+      description: "Mechas clássicas com touca para um contraste marcante",
+      buttonText: "Ver Luzes",
+      image: "https://i.pinimg.com/564x/a4/01/48/a40148fdce72a7cce85963f8081bdd91.jpg"
     }
   ];
 
   useEffect(() => {
-    // Aqui você conectará com seu back-end
-    // Por enquanto, vou usar dados mockados baseados no esquema do banco
+    // meu back-end
     const mockColors = [
       {
         id: 1,
         name: "Loiro Platinado",
-        image: "/placeholder-blonde.jpg",
+        image: "https://belabelinda.com/cdn/shop/files/IMG_5661.jpg?v=1753215055",
         category: "Loiros",
         favorites: false
       },
       {
         id: 2,
         name: "Castanho Chocolate",
-        image: "/placeholder-brown.jpg", 
+        image: "https://www.abcmais.com/midias/2025/05/Cabelo-na-cor-chocolate-e-tendencia-ivanazav_hairstylist-abcmais.jpg", 
         category: "Castanhos",
         favorites: false
       },
       {
         id: 3,
         name: "Ruivo Intenso",
-        image: "/placeholder-red.jpg",
+        image: "image/cabeloruivo.jpeg",
         category: "Ruivos", 
         favorites: false
       }
@@ -96,7 +87,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Cores em Destaque */}
+  
       <section className={styles.featuredSection}>
         <div className={styles.sectionContainer}>
           <h2 className={styles.sectionTitle}>
@@ -127,14 +118,14 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Serviços Populares */}
+      {/* Técnicas Mais Usadas */}
       <section className={styles.popularServicesSection}>
         <div className={styles.sectionContainer}>
           <h2 className={styles.sectionTitle}>
-            Nossos Serviços Populares
+            Técnicas Mais Usadas
           </h2>
           <p className={styles.sectionDescription}>
-            Descubra os serviços mais procurados para cuidar e transformar seu cabelo
+            Conheça os métodos de coloração mais populares para transformar seu visual
           </p>
 
           <div className={styles.servicesGrid}>
