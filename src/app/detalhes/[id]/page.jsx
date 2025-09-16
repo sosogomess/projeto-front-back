@@ -87,9 +87,9 @@ export default function DetalhesPage() {
       setColor(foundColor);
 
       const favorites = JSON.parse(
-        localStorage.getItem("hairToneFavorites") || "[]"
+        localStorage.getItem("favoriteColors") || "[]"
       );
-      setIsFavorite(favorites.includes(foundColor.id));
+      setIsFavorite(favorites.some(fav => fav.id === foundColor.id));
     }
 
     setLoading(false);
@@ -98,18 +98,30 @@ export default function DetalhesPage() {
   const toggleFavorite = () => {
     if (!color) return;
 
+    console.log('Toggle favorito chamado para cor:', color.name);
+
     const favorites = JSON.parse(
-      localStorage.getItem("hairToneFavorites") || "[]"
+      localStorage.getItem("favoriteColors") || "[]"
     );
     let newFavorites;
 
     if (isFavorite) {
-      newFavorites = favorites.filter((favId) => favId !== color.id);
+      newFavorites = favorites.filter((fav) => fav.id !== color.id);
+      console.log('Removendo dos favoritos');
     } else {
-      newFavorites = [...favorites, color.id];
+      const colorToSave = {
+        id: color.id,
+        nome: color.name,
+        categoria: color.category,
+        preco: color.price || "Consulte",
+        imagem: color.image
+      };
+      newFavorites = [...favorites, colorToSave];
+      console.log('Adicionando aos favoritos:', colorToSave);
     }
 
-    localStorage.setItem("hairToneFavorites", JSON.stringify(newFavorites));
+    localStorage.setItem("favoriteColors", JSON.stringify(newFavorites));
+    console.log('Favoritos salvos:', newFavorites);
     setIsFavorite(!isFavorite);
   };
 
@@ -222,7 +234,27 @@ export default function DetalhesPage() {
           <div className={styles.infoSection}>
             <div className={styles.headerInfo}>
               <h1 className={styles.colorTitle}>{color.name}</h1>
-              <span className={styles.categoryBadge}>{color.category}</span>
+              <div className={styles.headerActions}>
+                <span className={styles.categoryBadge}>{color.category}</span>
+                <button
+                  className={`${styles.favoriteButton} ${
+                    isFavorite ? styles.favoriteActive : ""
+                  }`}
+                  onClick={toggleFavorite}
+                  title={isFavorite ? "Remover dos favoritos" : "Adicionar aos favoritos"}
+                >
+                  <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill={isFavorite ? "currentColor" : "none"}
+                    stroke="currentColor"
+                    strokeWidth="2"
+                  >
+                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                  </svg>
+                </button>
+              </div>
             </div>
 
             <p className={styles.shortDescription}>{color.description}</p>

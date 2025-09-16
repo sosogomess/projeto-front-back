@@ -508,3 +508,44 @@
     border: 1px solid rgba(26, 26, 26, 0.06);
   }
 }
+
+/* Header Actions */
+.headerActions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.favoriteButton {
+  width: 48px;
+  height: 48px;
+  border: 2px solid rgba(26, 26, 26, 0.1);
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 50%;
+  color: #6b7280;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(10px);
+}
+
+.favoriteButton:hover {
+  border-color: #d4af37;
+  color: #d4af37;
+  background: rgba(212, 175, 55, 0.1);
+  transform: scale(1.05);
+}
+
+.favoriteActive {
+  background: linear-gradient(135deg, #d4af37, #b8941f);
+  border-color: #d4af37;
+  color: white;
+  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+}
+
+.favoriteActive:hover {
+  background: linear-gradient(135deg, #b8941f, #9d7d1a);
+  transform: scale(1.05);
+}

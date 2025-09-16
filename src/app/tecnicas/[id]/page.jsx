@@ -9,6 +9,7 @@ export default function TecnicaDetalhesPage() {
   const { id } = useParams();
   const router = useRouter();
   const [tecnica, setTecnica] = useState(null);
+  const [isFavorite, setIsFavorite] = useState(false);
   const [loading, setLoading] = useState(true);
   const [activeImageIndex, setActiveImageIndex] = useState(0);
 
@@ -138,10 +139,44 @@ export default function TecnicaDetalhesPage() {
 
     if (foundTecnica) {
       setTecnica(foundTecnica);
+
+      const favorites = JSON.parse(
+        localStorage.getItem("favoriteTechniques") || "[]"
+      );
+      setIsFavorite(favorites.some(fav => fav.id === foundTecnica.id));
     }
 
     setLoading(false);
   }, [id]);
+
+  const toggleFavorite = () => {
+    if (!tecnica) return;
+
+    console.log('Toggle favorito chamado para técnica:', tecnica.title);
+
+    const favorites = JSON.parse(
+      localStorage.getItem("favoriteTechniques") || "[]"
+    );
+    let newFavorites;
+
+    if (isFavorite) {
+      newFavorites = favorites.filter((fav) => fav.id !== tecnica.id);
+      console.log('Removendo técnica dos favoritos');
+    } else {
+      const techniqueToSave = {
+        id: tecnica.id,
+        title: tecnica.title,
+        image: tecnica.image,
+        priceRange: tecnica.priceRange
+      };
+      newFavorites = [...favorites, techniqueToSave];
+      console.log('Adicionando técnica aos favoritos:', techniqueToSave);
+    }
+
+    localStorage.setItem("favoriteTechniques", JSON.stringify(newFavorites));
+    console.log('Favoritos de técnicas salvos:', newFavorites);
+    setIsFavorite(!isFavorite);
+  };
 
   const handleImageChange = (index) => {
     setActiveImageIndex(index);
@@ -228,7 +263,27 @@ export default function TecnicaDetalhesPage() {
           <div className={styles.infoSection}>
             <div className={styles.headerInfo}>
               <h1 className={styles.techniqueTitle}>{tecnica.title}</h1>
-              <span className={styles.priceBadge}>{tecnica.priceRange}</span>
+              <div className={styles.headerActions}>
+                <span className={styles.priceBadge}>{tecnica.priceRange}</span>
+                <button
+                  className={`${styles.favoriteButton} ${
+                    isFavorite ? styles.favoriteActive : ""
+                  }`}
+                  onClick={toggleFavorite}
+                  title={isFavorite ? "Remover dos favoritos" : "Adicionar aos favoritos"}
+                >
+                  <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill={isFavorite ? "currentColor" : "none"}
+                    stroke="currentColor"
+                    strokeWidth="2"
+                  >
+                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                  </svg>
+                </button>
+              </div>
             </div>
 
             <p className={styles.shortDescription}>{tecnica.description}</p>
