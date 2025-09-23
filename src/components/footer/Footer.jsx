@@ -24,15 +24,6 @@ export default function Footer() {
             </ul>
           </div>
           <div className={styles.footerSection}>
-            <h3>Categorias</h3>
-            <ul className={styles.footerLinks}>
-              <li><a href="/listagem?categoria=loiros">Loiros</a></li>
-              <li><a href="/listagem?categoria=castanhos">Castanhos</a></li>
-              <li><a href="/listagem?categoria=ruivos">Ruivos</a></li>
-              <li><a href="/listagem?categoria=fantasias">Cores Fantasia</a></li>
-            </ul>
-          </div>
-          <div className={styles.footerSection}>
             <h3>Desenvolvido por</h3>
             <p>Sophia Gomes</p>
             <p>Turma: 2TDS2</p>

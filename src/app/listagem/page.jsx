@@ -14,12 +14,7 @@ export default function ListagemPage() {
   const [loading, setLoading] = useState(true);
 
   const categories = [
-    { value: 'todas', label: 'Todas as Cores' },
-    { value: 'loiros', label: 'Loiros' },
-    { value: 'castanhos', label: 'Castanhos' },
-    { value: 'ruivos', label: 'Ruivos' },
-    { value: 'pretos', label: 'Pretos' },
-    { value: 'fantasia', label: 'Cores Fantasia' }
+    { value: 'todas', label: 'Todas as Cores' }
   ];
 
   // Carregar cores da API

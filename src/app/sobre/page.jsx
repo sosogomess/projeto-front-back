@@ -7,7 +7,7 @@ import styles from './Sobre.module.css';
 export default function SobrePage() {
   return (
     <div className={styles.container}>
-      {/* Hero Section */}
+    
       <section className={styles.heroSection}>
         <div className={styles.heroContent}>
           <div className={styles.profileImageContainer}>
@@ -30,7 +30,6 @@ export default function SobrePage() {
         </div>
       </section>
 
-      {/* About Section */}
       <section className={styles.aboutSection}>
         <div className={styles.contentContainer}>
           <h2 className={styles.sectionTitle}>Sobre Mim</h2>
@@ -63,7 +62,6 @@ export default function SobrePage() {
         </div>
       </section>
 
-      {/* Project Section */}
       <section className={styles.projectSection}>
         <div className={styles.contentContainer}>
           <h2 className={styles.sectionTitle}>Sobre o Projeto</h2>
@@ -82,7 +80,6 @@ export default function SobrePage() {
                 <li>Buscar cores específicas</li>
                 <li>Salvar suas cores favoritas</li>
                 <li>Ver detalhes completos de cada cor</li>
-                <li>Acessar dicas de cuidados e aplicação</li>
               </ul>
             </div>
             <div className={styles.purposeCard}>
@@ -94,7 +91,6 @@ export default function SobrePage() {
               <ul>
                 <li>Desenvolvimento Front-end moderno</li>
                 <li>Design responsivo e UX/UI</li>
-                <li>Gerenciamento de estado</li>
                 <li>Componentização</li>
                 <li>Boas práticas de código</li>
                 <li>Versionamento com Git</li>
@@ -104,7 +100,6 @@ export default function SobrePage() {
         </div>
       </section>
 
-      {/* Journey Section */}
       <section className={styles.journeySection}>
         <div className={styles.contentContainer}>
           <h2 className={styles.sectionTitle}>Minha Jornada</h2>
