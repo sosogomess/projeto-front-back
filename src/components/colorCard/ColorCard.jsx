@@ -74,9 +74,6 @@ export default function ColorCard({
       <div className={styles.cardContent}>
         <h3 className={styles.colorName}>{color.name}</h3>
         <p className={styles.colorCategory}>Categoria: {color.category}</p>
-        {showPrice && color.price && (
-          <p className={styles.colorPrice}>{color.price}</p>
-        )}
         {color.description && (
           <p className={styles.colorDescription}>{color.description}</p>
         )}

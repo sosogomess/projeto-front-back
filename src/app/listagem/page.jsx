@@ -216,7 +216,7 @@ export default function ListagemPage() {
           ) : filteredColors.length > 0 ? (
             <div className={styles.colorsGrid}>
               {filteredColors.map((color) => (
-                <ColorCard key={color.id} color={color} showPrice={true} />
+                <ColorCard key={color.id} color={color} />
               ))}
             </div>
           ) : (

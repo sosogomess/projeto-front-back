@@ -144,7 +144,6 @@ export default function TecnicaDetalhesPage() {
             <div className={styles.headerInfo}>
               <h1 className={styles.techniqueTitle}>{tecnica.title}</h1>
               <div className={styles.headerActions}>
-                <span className={styles.priceBadge}>{tecnica.priceRange}</span>
                 <button
                   className={`${styles.favoriteButton} ${
                     isFavorite ? styles.favoriteActive : ""

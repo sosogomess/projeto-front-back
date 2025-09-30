@@ -1,7 +1,7 @@
 .pageContainer {
   min-height: 100vh;
   background: linear-gradient(135deg, #f8fafc 0%, #ffffff 50%, #f1f5f9 100%);
-  padding-top: 80px;
+  padding-top: 80px; 
 }
 
 .pageHeader {
@@ -23,7 +23,7 @@
   font-weight: 700;
   color: #1a1a1a;
   margin-bottom: 0.75rem;
-  font-family: "Playfair Display", serif;
+  font-family: 'Playfair Display', serif;
   line-height: 1.2;
   letter-spacing: -0.02em;
 }
@@ -68,7 +68,7 @@
   font-size: 0.95rem;
   background: white;
   transition: all 0.3s ease;
-  font-family: "Inter", sans-serif;
+  font-family: 'Inter', sans-serif;
 }
 
 .searchInput:focus {
@@ -152,7 +152,7 @@
   color: #374151;
   cursor: pointer;
   transition: all 0.3s ease;
-  font-family: "Inter", sans-serif;
+  font-family: 'Inter', sans-serif;
   white-space: nowrap;
 }
 
@@ -164,11 +164,7 @@
 }
 
 .categoryButton.active {
-  background: linear-gradient(
-    135deg,
-    rgba(26, 26, 26, 0.9),
-    rgba(26, 26, 26, 0.8)
-  );
+  background: linear-gradient(135deg, rgba(26, 26, 26, 0.9), rgba(26, 26, 26, 0.8));
   border-color: rgba(26, 26, 26, 0.2);
   color: white;
   font-weight: 600;
@@ -183,7 +179,7 @@
   color: #dc2626;
   cursor: pointer;
   transition: all 0.3s ease;
-  font-family: "Inter", sans-serif;
+  font-family: 'Inter', sans-serif;
   margin-top: 0.5rem;
 }
 
@@ -247,6 +243,7 @@
   border-radius: 12px;
 }
 
+
 .emptyState {
   text-align: center;
   padding: 3rem 1.5rem;
@@ -271,7 +268,7 @@
   font-weight: 600;
   color: #374151;
   margin-bottom: 0.75rem;
-  font-family: "Playfair Display", serif;
+  font-family: 'Playfair Display', serif;
 }
 
 .emptyMessage {
@@ -291,7 +288,7 @@
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;
-  font-family: "Inter", sans-serif;
+  font-family: 'Inter', sans-serif;
 }
 
 .resetButton:hover {
