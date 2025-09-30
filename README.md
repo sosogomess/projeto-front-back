@@ -17,12 +17,11 @@ escolherem um novo visual.
 
 ## Tecnologias Utilizadas
 
-- **Next.js 14** - Framework React com App Router
-- **React 18** - Biblioteca para construção de interfaces
+- **Next.js** - Framework React com App Router
+- **React** - Biblioteca para construção de interfaces
 - **CSS Modules** - Estilização modular e scoped
 - **Local Storage** - Persistência de dados do lado cliente
-
-
+- 
 ## Instalação e Configuração
 
 1. **Clone o repositório**
