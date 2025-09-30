@@ -39,7 +39,6 @@ export default function Home() {
   ];
 
   useEffect(() => {
-    // meu back-end
     const mockColors = [
       {
         id: 1,

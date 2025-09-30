@@ -22,99 +22,49 @@ export default function DetalhesPage() {
       try {
         setLoading(true);
         const colorData = await hairTonesAPI.getById(parseInt(id));
-        
-        // Garantir que images seja sempre um array
+
         if (colorData) {
           if (!colorData.images || !Array.isArray(colorData.images)) {
             colorData.images = colorData.image ? [colorData.image] : [];
           }
-          if (!colorData.careInstructions || !Array.isArray(colorData.careInstructions)) {
+          if (
+            !colorData.careInstructions ||
+            !Array.isArray(colorData.careInstructions)
+          ) {
             colorData.careInstructions = [];
           }
           if (!colorData.suitableFor || !Array.isArray(colorData.suitableFor)) {
             colorData.suitableFor = [];
           }
-          
-          console.log('Dados da cor carregados:', colorData);
-          console.log('Care Instructions:', colorData.careInstructions);
-          console.log('Suitable For:', colorData.suitableFor);
-          
+
+          console.log("Dados da cor carregados:", colorData);
+          console.log("Care Instructions:", colorData.careInstructions);
+          console.log("Suitable For:", colorData.suitableFor);
+
           setColor(colorData);
 
           const favorites = JSON.parse(
             localStorage.getItem("favoriteColors") || "[]"
           );
-          setIsFavorite(favorites.some(fav => fav.id === colorData.id));
+          setIsFavorite(favorites.some((fav) => fav.id === colorData.id));
         }
       } catch (error) {
-        console.error('Erro ao carregar detalhes da cor:', error);
-        // Fallback para dados locais se a API falhar
-        const fallbackColors = [
-          {
-            id: 1,
-            name: "Loiro Platinado",
-            image: "https://belabelinda.com/cdn/shop/files/IMG_5661.jpg?v=1753215055",
-            category: "loiros",
-            favorites: false,
-            description: "Tom loiro platinado ultra claro, perfeito para quem busca um visual marcante e moderno.",
-            detailedDescription: "O loiro platinado é uma das cores mais desejadas no mundo da coloração capilar.",
-            careInstructions: ["Use shampoo matizador roxo 2-3 vezes por semana", "Aplique máscara nutritiva semanalmente"],
-            suitableFor: ["Peles claras e médias", "Olhos claros ou escuros"],
-            duration: "4-6 semanas",
-            difficulty: "Alta - Requer descoloração",
-            images: [
-              "https://belabelinda.com/cdn/shop/files/IMG_5661.jpg?v=1753215055",
-              "https://belabelinda.com/cdn/shop/files/IMG_5661.jpg?v=1753215055",
-              "https://belabelinda.com/cdn/shop/files/IMG_5661.jpg?v=1753215055"
-            ]
-          },
-          {
-            id: 2,
-            name: "Castanho Chocolate",
-            image: "https://www.abcmais.com/midias/2025/05/Cabelo-na-cor-chocolate-e-tendencia-ivanazav_hairstylist-abcmais.jpg",
-            category: "castanhos",
-            favorites: true,
-            description: "Castanho chocolate rico e profundo, ideal para um look natural e elegante.",
-            detailedDescription: "O castanho chocolate é um tom clássico e versátil que combina com diversos tipos de pele.",
-            careInstructions: ["Use shampoo para cabelos coloridos", "Aplique leave-in com proteção UV"],
-            suitableFor: ["Todos os tipos de pele", "Olhos castanhos ou verdes"],
-            duration: "6-8 semanas",
-            difficulty: "Baixa - Cor de fácil aplicação",
-            images: [
-              "https://www.abcmais.com/midias/2025/05/Cabelo-na-cor-chocolate-e-tendencia-ivanazav_hairstylist-abcmais.jpg",
-              "https://www.abcmais.com/midias/2025/05/Cabelo-na-cor-chocolate-e-tendencia-ivanazav_hairstylist-abcmais.jpg",
-              "https://www.abcmais.com/midias/2025/05/Cabelo-na-cor-chocolate-e-tendencia-ivanazav_hairstylist-abcmais.jpg"
-            ]
-          },
-          {
-            id: 3,
-            name: "Ruivo Intenso",
-            image: "/image/cabeloruivo.jpeg",
-            category: "ruivos",
-            favorites: false,
-            description: "Ruivo vibrante e intenso que chama atenção e expressa personalidade.",
-            detailedDescription: "O ruivo intenso é uma cor marcante que expressa personalidade forte e confiança.",
-            careInstructions: ["Use shampoo específico para cabelos ruivos", "Aplique máscara hidratante semanalmente"],
-            suitableFor: ["Peles claras com undertone quente", "Olhos verdes, azuis ou âmbar"],
-            duration: "4-5 semanas",
-            difficulty: "Média - Requer preparação da base",
-            images: [
-              "/image/cabeloruivo.jpeg",
-              "/image/cabeloruivo.jpeg",
-              "/image/cabeloruivo.jpeg"
-            ]
-          }
-        ];
-        
+        console.error("Erro ao carregar detalhes da cor:", error);
+
         const foundColor = fallbackColors.find((c) => c.id === parseInt(id));
         if (foundColor) {
-          console.log('Usando dados de fallback para cor:', foundColor);
-          console.log('Care Instructions fallback:', foundColor.careInstructions);
-          console.log('Suitable For fallback:', foundColor.suitableFor);
-          
+          console.log("Usando dados de fallback para cor:", foundColor);
+          console.log(
+            "Care Instructions fallback:",
+            foundColor.careInstructions
+          );
+          console.log("Suitable For fallback:", foundColor.suitableFor);
+
           setColor(foundColor);
-          const favorites = JSON.parse(localStorage.getItem("favoriteColors") || "[]");
-          setIsFavorite(favorites.some(fav => fav.id === foundColor.id));
+          const favorites = JSON.parse(
+            localStorage.getItem("favoriteColors") || "[]"
+          );
+          setIsFavorite(favorites.some((fav) => fav.id === foundColor.id));
         }
       } finally {
         setLoading(false);
@@ -127,7 +77,7 @@ export default function DetalhesPage() {
   const toggleFavorite = () => {
     if (!color) return;
 
-    console.log('Toggle favorito chamado para cor:', color.name);
+    console.log("Toggle favorito chamado para cor:", color.name);
 
     const favorites = JSON.parse(
       localStorage.getItem("favoriteColors") || "[]"
@@ -136,21 +86,21 @@ export default function DetalhesPage() {
 
     if (isFavorite) {
       newFavorites = favorites.filter((fav) => fav.id !== color.id);
-      console.log('Removendo dos favoritos');
+      console.log("Removendo dos favoritos");
     } else {
       const colorToSave = {
         id: color.id,
         nome: color.name,
         categoria: color.category,
         preco: color.price || "Consulte",
-        imagem: color.image
+        imagem: color.image,
       };
       newFavorites = [...favorites, colorToSave];
-      console.log('Adicionando aos favoritos:', colorToSave);
+      console.log("Adicionando aos favoritos:", colorToSave);
     }
 
     localStorage.setItem("favoriteColors", JSON.stringify(newFavorites));
-    console.log('Favoritos salvos:', newFavorites);
+    console.log("Favoritos salvos:", newFavorites);
     setIsFavorite(!isFavorite);
   };
 
@@ -207,7 +157,11 @@ export default function DetalhesPage() {
           <div className={styles.imageSection}>
             <div className={styles.mainImageContainer}>
               <img
-                src={color.images && color.images[activeImageIndex] ? color.images[activeImageIndex] : (color.image || "/placeholder-hair-color.jpg")}
+                src={
+                  color.images && color.images[activeImageIndex]
+                    ? color.images[activeImageIndex]
+                    : color.image || "/placeholder-hair-color.jpg"
+                }
                 alt={`${color.name} - Imagem ${activeImageIndex + 1}`}
                 className={styles.mainImage}
                 onError={(e) => {
@@ -270,7 +224,11 @@ export default function DetalhesPage() {
                     isFavorite ? styles.favoriteActive : ""
                   }`}
                   onClick={toggleFavorite}
-                  title={isFavorite ? "Remover dos favoritos" : "Adicionar aos favoritos"}
+                  title={
+                    isFavorite
+                      ? "Remover dos favoritos"
+                      : "Adicionar aos favoritos"
+                  }
                 >
                   <svg
                     width="24"
