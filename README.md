@@ -1,10 +1,11 @@
 # HairTune 
 
-Um projeto Next.js moderno para explorar e descobrir diferentes técnicas de coloração capilar, desenvolvido com as melhores práticas de desenvolvimento web.
+Projeto de uma aplicação web completa (front-end + back-end) demonstrando meus conhecimentos adquiridos durante o curso.
 
 ## Sobre o Projeto
 
-Esta aplicação permite aos usuários explorar uma variedade de técnicas de coloração capilar, incluindo Mechas Californianas, Ombré Hair e Luzes Tradicionais. Os usuários podem visualizar detalhes de cada técnica, adicionar favoritos e navegar por diferentes opções de cores.
+Esta aplicação permite aos usuários explorar uma variedade de técnicas de coloração capilar, que reúne tonalidades, tendências e combinações para ajudar pessoas a
+escolherem um novo visual.
 
 ## Funcionalidades
 
@@ -26,8 +27,7 @@ Esta aplicação permite aos usuários explorar uma variedade de técnicas de co
 
 1. **Clone o repositório**
 ```bash
-git clone <seu-repositorio>
-cd projeto-front-back
+git clone (https://github.com/sosogomess/projeto-front-back.git)
 ```
 
 2. **Instale as dependências**
@@ -39,10 +39,6 @@ npm install
 ```bash
 npm run dev
 ```
-
-4. **Acesse a aplicação**
-Abra [http://localhost:3000](http://localhost:3000) no seu navegador
-
 ## 🎯 Como Usar
 
 1. **Página Inicial**: Navegue pelas técnicas disponíveis
