@@ -108,7 +108,6 @@ export default function Favoritos() {
         <div className={styles.content}>
           {favoriteColors.length > 0 && (
             <section className={styles.section}>
-              <h2 className={styles.sectionTitle}>Cores Favoritas</h2>
               <div className={styles.grid}>
                 {favoriteColors.map((color) => (
                   <div key={color.id} className={styles.card}>
