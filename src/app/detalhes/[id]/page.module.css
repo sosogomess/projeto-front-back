@@ -4,7 +4,6 @@
   padding-top: 80px;
 }
 
-/* Breadcrumb */
 .breadcrumb {
   padding: 1rem 0;
   background: rgba(255, 255, 255, 0.7);
@@ -43,7 +42,6 @@
   font-weight: 600;
 }
 
-/* Conteúdo Principal */
 .mainContent {
   padding: 2rem 0 3rem 0;
 }
@@ -58,7 +56,6 @@
   align-items: start;
 }
 
-/* Seção de Imagens */
 .imageSection {
   position: sticky;
   top: 20px;
@@ -125,7 +122,6 @@
   height: 1.25rem;
 }
 
-/* Thumbnails */
 .thumbnailsContainer {
   display: flex;
   gap: 0.75rem;
@@ -162,7 +158,6 @@
   object-fit: cover;
 }
 
-/* Seção de Informações */
 .infoSection {
   display: flex;
   flex-direction: column;
@@ -182,14 +177,18 @@
   font-size: 2.25rem;
   font-weight: 700;
   color: #1a1a1a;
-  font-family: 'Playfair Display', serif;
+  font-family: "Playfair Display", serif;
   line-height: 1.2;
   letter-spacing: -0.02em;
 }
 
 .categoryBadge {
   padding: 0.5rem 1rem;
-  background: linear-gradient(135deg, rgba(26, 26, 26, 0.08), rgba(26, 26, 26, 0.04));
+  background: linear-gradient(
+    135deg,
+    rgba(26, 26, 26, 0.08),
+    rgba(26, 26, 26, 0.04)
+  );
   color: #374151;
   border-radius: 20px;
   font-size: 0.875rem;
@@ -205,7 +204,6 @@
   margin-bottom: 0.5rem;
 }
 
-/* Cards de Informação */
 .detailsCard,
 .suitabilityCard,
 .careCard {
@@ -222,7 +220,7 @@
   font-weight: 600;
   color: #1a1a1a;
   margin-bottom: 1rem;
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
 }
 
 .detailedDescription {
@@ -231,7 +229,6 @@
   font-size: 0.95rem;
 }
 
-/* Informações Técnicas */
 .technicalInfo {
   display: flex;
   gap: 1rem;
@@ -280,7 +277,6 @@
   color: #dc2626;
 }
 
-/* Lista de Adequação */
 .suitabilityList {
   list-style: none;
   padding: 0;
@@ -306,7 +302,6 @@
   flex-shrink: 0;
 }
 
-/* Lista de Cuidados */
 .careList {
   list-style: none;
   padding: 0;
@@ -340,7 +335,6 @@
   margin-top: 0.125rem;
 }
 
-/* Botões de Ação */
 .actionButtons {
   display: flex;
   flex-direction: column;
@@ -362,17 +356,25 @@
   transition: all 0.3s ease;
   cursor: pointer;
   border: none;
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
 }
 
 .favoriteActionButton {
-  background: linear-gradient(135deg, rgba(220, 38, 38, 0.08), rgba(220, 38, 38, 0.04));
+  background: linear-gradient(
+    135deg,
+    rgba(220, 38, 38, 0.08),
+    rgba(220, 38, 38, 0.04)
+  );
   color: #dc2626;
   border: 2px solid rgba(220, 38, 38, 0.2);
 }
 
 .favoriteActionButton:hover {
-  background: linear-gradient(135deg, rgba(220, 38, 38, 0.15), rgba(220, 38, 38, 0.08));
+  background: linear-gradient(
+    135deg,
+    rgba(220, 38, 38, 0.15),
+    rgba(220, 38, 38, 0.08)
+  );
   border-color: rgba(220, 38, 38, 0.3);
   transform: translateY(-2px);
   box-shadow: 0 8px 25px rgba(220, 38, 38, 0.2);
@@ -401,7 +403,6 @@
   height: 1rem;
 }
 
-/* Estados de Loading e Erro */
 .loadingContainer,
 .notFoundContainer {
   display: flex;
@@ -424,8 +425,12 @@
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 .backButton {

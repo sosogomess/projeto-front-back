@@ -4,7 +4,8 @@ import { useState, useEffect } from "react";
 import { useParams, useRouter } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
-import { hairTonesAPI } from "../../../services/api";
+import axios from "axios";
+import { toast } from "react-toastify";
 import styles from "./page.module.css";
 
 export default function DetalhesPage() {
@@ -15,62 +16,45 @@ export default function DetalhesPage() {
   const [loading, setLoading] = useState(true);
   const [activeImageIndex, setActiveImageIndex] = useState(0);
 
+  const fetchColorDetails = async () => {
+    try {
+      const response = await axios.get("http://localhost:5000/hairtones");
+      const allColors = response.data;
+      const colorData = allColors.find((color) => color.id == id);
+
+      if (colorData) {
+        if (!colorData.images || !Array.isArray(colorData.images)) {
+          colorData.images = colorData.image ? [colorData.image] : [];
+        }
+        if (
+          !colorData.careInstructions ||
+          !Array.isArray(colorData.careInstructions)
+        ) {
+          colorData.careInstructions = [];
+        }
+        if (!colorData.suitableFor || !Array.isArray(colorData.suitableFor)) {
+          colorData.suitableFor = [];
+        }
+
+        setColor(colorData);
+        const favorites = JSON.parse(
+          localStorage.getItem("favoriteColors") || "[]"
+        );
+        setIsFavorite(favorites.some((fav) => fav.id === colorData.id));
+        toast.success("Detalhes da cor carregados!");
+      } else {
+        toast.error("Cor não encontrada.");
+      }
+    } catch (error) {
+      toast.error("Erro ao carregar detalhes da cor.");
+      console.error("Erro ao carregar detalhes da cor:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   useEffect(() => {
     if (!id) return;
-
-    const fetchColorDetails = async () => {
-      try {
-        setLoading(true);
-        const colorData = await hairTonesAPI.getById(parseInt(id));
-
-        if (colorData) {
-          if (!colorData.images || !Array.isArray(colorData.images)) {
-            colorData.images = colorData.image ? [colorData.image] : [];
-          }
-          if (
-            !colorData.careInstructions ||
-            !Array.isArray(colorData.careInstructions)
-          ) {
-            colorData.careInstructions = [];
-          }
-          if (!colorData.suitableFor || !Array.isArray(colorData.suitableFor)) {
-            colorData.suitableFor = [];
-          }
-
-          console.log("Dados da cor carregados:", colorData);
-          console.log("Care Instructions:", colorData.careInstructions);
-          console.log("Suitable For:", colorData.suitableFor);
-
-          setColor(colorData);
-
-          const favorites = JSON.parse(
-            localStorage.getItem("favoriteColors") || "[]"
-          );
-          setIsFavorite(favorites.some((fav) => fav.id === colorData.id));
-        }
-      } catch (error) {
-        console.error("Erro ao carregar detalhes da cor:", error);
-
-        const foundColor = fallbackColors.find((c) => c.id === parseInt(id));
-        if (foundColor) {
-          console.log("Usando dados de fallback para cor:", foundColor);
-          console.log(
-            "Care Instructions fallback:",
-            foundColor.careInstructions
-          );
-          console.log("Suitable For fallback:", foundColor.suitableFor);
-
-          setColor(foundColor);
-          const favorites = JSON.parse(
-            localStorage.getItem("favoriteColors") || "[]"
-          );
-          setIsFavorite(favorites.some((fav) => fav.id === foundColor.id));
-        }
-      } finally {
-        setLoading(false);
-      }
-    };
-
     fetchColorDetails();
   }, [id]);
 
@@ -106,13 +90,6 @@ export default function DetalhesPage() {
 
   const handleImageChange = (index) => {
     setActiveImageIndex(index);
-  };
-
-  const getDifficultyColor = (difficulty) => {
-    if (difficulty.includes("Baixa")) return styles.difficultyEasy;
-    if (difficulty.includes("Média")) return styles.difficultyMedium;
-    if (difficulty.includes("Alta")) return styles.difficultyHard;
-    return "";
   };
 
   if (loading) {
@@ -189,29 +166,6 @@ export default function DetalhesPage() {
                 </svg>
               </button>
             </div>
-
-            {color.images && color.images.length > 1 && (
-              <div className={styles.thumbnailsContainer}>
-                {color.images.map((image, index) => (
-                  <button
-                    key={index}
-                    onClick={() => handleImageChange(index)}
-                    className={`${styles.thumbnail} ${
-                      index === activeImageIndex ? styles.thumbnailActive : ""
-                    }`}
-                  >
-                    <img
-                      src={image}
-                      alt={`${color.name} - Miniatura ${index + 1}`}
-                      className={styles.thumbnailImage}
-                      onError={(e) => {
-                        e.target.src = "/placeholder-hair-color.jpg";
-                      }}
-                    />
-                  </button>
-                ))}
-              </div>
-            )}
           </div>
 
           <div className={styles.infoSection}>

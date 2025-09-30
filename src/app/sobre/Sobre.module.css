@@ -1,10 +1,8 @@
-/* Container principal */
 .container {
   min-height: 100vh;
   background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
 }
 
-/* Hero Section */
 .heroSection {
   padding: 4rem 2rem;
   background: linear-gradient(135deg, #1a1a1a 0%, #2c2c2c 100%);
@@ -67,14 +65,12 @@
   line-height: 1.6;
 }
 
-/* Content Container */
 .contentContainer {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 2rem;
 }
 
-/* Section Styles */
 .aboutSection,
 .projectSection,
 .journeySection,
@@ -91,7 +87,6 @@
   letter-spacing: -0.02em;
 }
 
-/* About Section */
 .aboutGrid {
   display: grid;
   grid-template-columns: 2fr 1fr;
@@ -150,7 +145,6 @@
   transform: translateY(-2px);
 }
 
-/* Project Section */
 .projectSection {
   background: white;
 }
@@ -236,7 +230,6 @@
   font-weight: bold;
 }
 
-/* Journey Section */
 .journeyContent {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -276,7 +269,6 @@
   line-height: 1.6;
 }
 
-/* Contact Section */
 .contactSection {
   background: linear-gradient(135deg, #1a1a1a 0%, #2c2c2c 100%);
   color: white;

@@ -1,12 +1,9 @@
-/* Página de Listagem - Catálogo de Cores */
-
 .pageContainer {
   min-height: 100vh;
   background: linear-gradient(135deg, #f8fafc 0%, #ffffff 50%, #f1f5f9 100%);
-  padding-top: 80px; /* Espaço para o header fixo */
+  padding-top: 80px;
 }
 
-/* Header da Página */
 .pageHeader {
   padding: 2rem 0 1.5rem 0;
   text-align: center;
@@ -26,7 +23,7 @@
   font-weight: 700;
   color: #1a1a1a;
   margin-bottom: 0.75rem;
-  font-family: 'Playfair Display', serif;
+  font-family: "Playfair Display", serif;
   line-height: 1.2;
   letter-spacing: -0.02em;
 }
@@ -40,7 +37,6 @@
   font-weight: 400;
 }
 
-/* Seção de Filtros */
 .filtersSection {
   padding: 1.5rem 0;
   background: rgba(255, 255, 255, 0.6);
@@ -54,7 +50,6 @@
   padding: 0 1.5rem;
 }
 
-/* Barra de Busca */
 .searchContainer {
   margin-bottom: 1.5rem;
 }
@@ -73,7 +68,7 @@
   font-size: 0.95rem;
   background: white;
   transition: all 0.3s ease;
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
 }
 
 .searchInput:focus {
@@ -125,7 +120,6 @@
   height: 1rem;
 }
 
-/* Filtros por Categoria */
 .categoriesContainer {
   display: flex;
   flex-direction: column;
@@ -158,7 +152,7 @@
   color: #374151;
   cursor: pointer;
   transition: all 0.3s ease;
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   white-space: nowrap;
 }
 
@@ -170,7 +164,11 @@
 }
 
 .categoryButton.active {
-  background: linear-gradient(135deg, rgba(26, 26, 26, 0.9), rgba(26, 26, 26, 0.8));
+  background: linear-gradient(
+    135deg,
+    rgba(26, 26, 26, 0.9),
+    rgba(26, 26, 26, 0.8)
+  );
   border-color: rgba(26, 26, 26, 0.2);
   color: white;
   font-weight: 600;
@@ -185,7 +183,7 @@
   color: #dc2626;
   cursor: pointer;
   transition: all 0.3s ease;
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   margin-top: 0.5rem;
 }
 
@@ -194,7 +192,6 @@
   border-color: rgba(239, 68, 68, 0.4);
 }
 
-/* Seção de Resultados */
 .resultsSection {
   padding: 2rem 0 3rem 0;
 }
@@ -225,7 +222,6 @@
   font-style: italic;
 }
 
-/* Grid de Cores */
 .colorsGrid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
@@ -233,7 +229,6 @@
   margin-top: 1.5rem;
 }
 
-/* Loading States */
 .loadingContainer {
   margin-top: 1.5rem;
 }
@@ -252,16 +247,6 @@
   border-radius: 12px;
 }
 
-@keyframes loading {
-  0% {
-    background-position: 200% 0;
-  }
-  100% {
-    background-position: -200% 0;
-  }
-}
-
-/* Empty State */
 .emptyState {
   text-align: center;
   padding: 3rem 1.5rem;
@@ -286,7 +271,7 @@
   font-weight: 600;
   color: #374151;
   margin-bottom: 0.75rem;
-  font-family: 'Playfair Display', serif;
+  font-family: "Playfair Display", serif;
 }
 
 .emptyMessage {
@@ -306,7 +291,7 @@
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
 }
 
 .resetButton:hover {

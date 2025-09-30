@@ -1,7 +1,7 @@
-'use client';
-import { useState, useEffect } from 'react';
-import Link from 'next/link';
-import styles from './page.module.css';
+"use client";
+import { useState, useEffect } from "react";
+import Link from "next/link";
+import styles from "./page.module.css";
 
 export default function Favoritos() {
   const [favoriteColors, setFavoriteColors] = useState([]);
@@ -10,33 +10,44 @@ export default function Favoritos() {
 
   useEffect(() => {
     try {
-      const storedFavoriteColors = JSON.parse(localStorage.getItem('favoriteColors') || '[]');
-      const storedFavoriteTechniques = JSON.parse(localStorage.getItem('favoriteTechniques') || '[]');
-      
-      console.log('Cores favoritas carregadas:', storedFavoriteColors);
-      console.log('Técnicas favoritas carregadas:', storedFavoriteTechniques);
-      
+      const storedFavoriteColors = JSON.parse(
+        localStorage.getItem("favoriteColors") || "[]"
+      );
+      const storedFavoriteTechniques = JSON.parse(
+        localStorage.getItem("favoriteTechniques") || "[]"
+      );
+
+      console.log("Cores favoritas carregadas:", storedFavoriteColors);
+      console.log("Técnicas favoritas carregadas:", storedFavoriteTechniques);
+
       setFavoriteColors(storedFavoriteColors);
       setFavoriteTechniques(storedFavoriteTechniques);
     } catch (error) {
-      console.error('Erro ao carregar favoritos:', error);
+      console.error("Erro ao carregar favoritos:", error);
       setFavoriteColors([]);
       setFavoriteTechniques([]);
     }
-    
+
     setIsLoading(false);
   }, []);
 
   const removeFavoriteColor = (colorId) => {
-    const updatedColors = favoriteColors.filter(color => color.id !== colorId);
+    const updatedColors = favoriteColors.filter(
+      (color) => color.id !== colorId
+    );
     setFavoriteColors(updatedColors);
-    localStorage.setItem('favoriteColors', JSON.stringify(updatedColors));
+    localStorage.setItem("favoriteColors", JSON.stringify(updatedColors));
   };
 
   const removeFavoriteTechnique = (techniqueId) => {
-    const updatedTechniques = favoriteTechniques.filter(technique => technique.id !== techniqueId);
+    const updatedTechniques = favoriteTechniques.filter(
+      (technique) => technique.id !== techniqueId
+    );
     setFavoriteTechniques(updatedTechniques);
-    localStorage.setItem('favoriteTechniques', JSON.stringify(updatedTechniques));
+    localStorage.setItem(
+      "favoriteTechniques",
+      JSON.stringify(updatedTechniques)
+    );
   };
 
   if (isLoading) {
@@ -50,7 +61,8 @@ export default function Favoritos() {
     );
   }
 
-  const hasFavorites = favoriteColors.length > 0 || favoriteTechniques.length > 0;
+  const hasFavorites =
+    favoriteColors.length > 0 || favoriteTechniques.length > 0;
 
   return (
     <div className={styles.container}>
@@ -64,8 +76,19 @@ export default function Favoritos() {
       {!hasFavorites ? (
         <div className={styles.emptyState}>
           <div className={styles.emptyIcon}>
-            <svg width="80" height="80" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" stroke="currentColor" strokeWidth="1.5" fill="none"/>
+            <svg
+              width="80"
+              height="80"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                fill="none"
+              />
             </svg>
           </div>
           <h2 className={styles.emptyTitle}>Nenhum favorito ainda</h2>
@@ -91,21 +114,31 @@ export default function Favoritos() {
                   <div key={color.id} className={styles.card}>
                     <div className={styles.cardImage}>
                       <img src={color.imagem} alt={color.nome} />
-                      <button 
+                      <button
                         className={styles.removeButton}
                         onClick={() => removeFavoriteColor(color.id)}
                         title="Remover dos favoritos"
                       >
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                          <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+                        <svg
+                          width="20"
+                          height="20"
+                          viewBox="0 0 24 24"
+                          fill="currentColor"
+                        >
+                          <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
                         </svg>
                       </button>
                     </div>
                     <div className={styles.cardContent}>
                       <h3 className={styles.cardTitle}>{color.nome}</h3>
                       <p className={styles.cardCategory}>{color.categoria}</p>
-                      <p className={styles.cardPrice}>A partir de {color.preco}</p>
-                      <Link href={`/detalhes/${color.id}`} className={styles.viewButton}>
+                      <p className={styles.cardPrice}>
+                        A partir de {color.preco}
+                      </p>
+                      <Link
+                        href={`/detalhes/${color.id}`}
+                        className={styles.viewButton}
+                      >
                         Ver Detalhes
                       </Link>
                     </div>
@@ -123,13 +156,18 @@ export default function Favoritos() {
                   <div key={technique.id} className={styles.card}>
                     <div className={styles.cardImage}>
                       <img src={technique.image} alt={technique.title} />
-                      <button 
+                      <button
                         className={styles.removeButton}
                         onClick={() => removeFavoriteTechnique(technique.id)}
                         title="Remover dos favoritos"
                       >
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                          <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+                        <svg
+                          width="20"
+                          height="20"
+                          viewBox="0 0 24 24"
+                          fill="currentColor"
+                        >
+                          <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
                         </svg>
                       </button>
                     </div>
@@ -137,7 +175,10 @@ export default function Favoritos() {
                       <h3 className={styles.cardTitle}>{technique.title}</h3>
                       <p className={styles.cardCategory}>Técnica</p>
                       <p className={styles.cardPrice}>{technique.priceRange}</p>
-                      <Link href={`/tecnicas/${technique.id}`} className={styles.viewButton}>
+                      <Link
+                        href={`/tecnicas/${technique.id}`}
+                        className={styles.viewButton}
+                      >
                         Ver Detalhes
                       </Link>
                     </div>
