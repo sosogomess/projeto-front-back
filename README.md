@@ -1,36 +1,57 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# HairTune 
 
-## Getting Started
+Um projeto Next.js moderno para explorar e descobrir diferentes técnicas de coloração capilar, desenvolvido com as melhores práticas de desenvolvimento web.
 
-First, run the development server:
+## Sobre o Projeto
 
+Esta aplicação permite aos usuários explorar uma variedade de técnicas de coloração capilar, incluindo Mechas Californianas, Ombré Hair e Luzes Tradicionais. Os usuários podem visualizar detalhes de cada técnica, adicionar favoritos e navegar por diferentes opções de cores.
+
+## Funcionalidades
+
+- **Catálogo de Técnicas**: Visualize diferentes técnicas de coloração capilar
+- **Detalhes Completos**: Informações detalhadas sobre cada técnica
+- **Sistema de Favoritos**: Salve suas técnicas preferidas localmente
+- **Navegação Intuitiva**: Interface limpa e responsiva
+- **Listagem de Cores**: Explore diferentes opções de coloração
+
+## Tecnologias Utilizadas
+
+- **Next.js 14** - Framework React com App Router
+- **React 18** - Biblioteca para construção de interfaces
+- **CSS Modules** - Estilização modular e scoped
+- **Local Storage** - Persistência de dados do lado cliente
+
+
+## Instalação e Configuração
+
+1. **Clone o repositório**
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone <seu-repositorio>
+cd projeto-front-back
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. **Instale as dependências**
+```bash
+npm install
+```
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+3. **Execute o servidor de desenvolvimento**
+```bash
+npm run dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+4. **Acesse a aplicação**
+Abra [http://localhost:3000](http://localhost:3000) no seu navegador
 
-## Learn More
+## 🎯 Como Usar
 
-To learn more about Next.js, take a look at the following resources:
+1. **Página Inicial**: Navegue pelas técnicas disponíveis
+2. **Detalhes da Técnica**: Clique em uma técnica para ver informações completas
+3. **Adicionar Favoritos**: Use o botão de coração para salvar técnicas favoritas
+4. **Explorar Cores**: Acesse a seção de listagem para ver opções de cores
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Desenvolvido com ❤️ para explorar o mundo das técnicas capilares.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+⭐ Se este projeto foi útil para você, considere dar uma estrela no repositório!
