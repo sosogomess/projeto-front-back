@@ -132,9 +132,6 @@ export default function Favoritos() {
                     <div className={styles.cardContent}>
                       <h3 className={styles.cardTitle}>{color.nome}</h3>
                       <p className={styles.cardCategory}>{color.categoria}</p>
-                      <p className={styles.cardPrice}>
-                        A partir de {color.preco}
-                      </p>
                       <Link
                         href={`/detalhes/${color.id}`}
                         className={styles.viewButton}
